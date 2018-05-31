@@ -1,8 +1,8 @@
 ---
   - name: copy agent file to client
-    copy: src=zabbix-agent.deb dest=/opt/zabbix-agent.deb
+    copy: src=zabbix-agent.deb dest=/tmp/zabbix-agent.deb
   - name: install agent
-    apt: deb=/opt/zabbix-agent.deb state=present
+    apt: deb=/tmp/zabbix-agent.deb state=present
   - name: copy zabbix_agentd.conf
     template: src=zabbix_agentd.j2 dest=/etc/zabbix/zabbix_agentd.conf force=yes
     notify: restart zabbix-agent
