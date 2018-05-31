@@ -1,0 +1,12 @@
+---
+  - name: copy agent file to client
+    copy: src=zabbix-agent-el7.rpm dest=/tmp/zabbix-agent.rpm
+    when: ansible_distribution_major_version == "7"
+  - name: copy agent file to client
+    copy: src=zabbix-agent-el6.rpm dest=/tmp/zabbix-agent.rpm
+    when: ansible_distribution_major_version == "6"
+  - name: install agent
+    yum: name=/tmp/zabbix-agent.rpm state=present
+  - name: copy zabbix_agentd.conf
+    template: src=zabbix_agentd.j2 dest=/etc/zabbix/zabbix_agentd.conf force=yes
+    notify: restart zabbix-agent
