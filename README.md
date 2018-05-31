@@ -1,2 +1,2 @@
-# ansible-zabbixagent
-install zabbix-agent roles for ansible
+# ansible-zabbix-agent
+Install zabbix-agent roles for ansible.
